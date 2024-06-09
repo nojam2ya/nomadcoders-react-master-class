@@ -10,7 +10,7 @@ const Routers = () => {
       <Routes>
         <Route path="/" element={<Coins />} />
         <Route path="/:coinId" element={<Coin />}>
-          <Route index element={<Navigate to="tickers" replace={false} />} />
+          <Route index element={<Navigate to="tickers" replace={true} />} />
           <Route path="tickers" element={<Tickers />} />
           <Route path="chart" element={<Chart />} />
         </Route>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Wrap = styled.section`
   display: flex;
+  max-width: 960px;
+  margin: 0 auto;
   justify-content: space-between;
   padding: 20px;
 
@@ -54,6 +56,8 @@ export const BoxInfo = styled.article`
 
   .description {
     padding: 20px;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .tickers {
@@ -67,8 +71,16 @@ export const BoxInfo = styled.article`
 `;
 
 export const BoxTab = styled.article`
-  .tab {
+  .content {
     padding: 20px;
+    border-radius: 0 0 8px 8px;
+    min-height: 220px;
+
+    color: #000;
+    font-size: 14px;
+    line-height: 1.4;
+
+    background-color: ${(props) => props.theme.textColor};
   }
 `;
 
@@ -81,11 +93,11 @@ export const TabMenu = styled.ul`
 
     a {
       display: block;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 14px;
+      border-radius: 8px 8px 0 0;
 
       text-align: center;
-      font-size: 0.74rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: ${(props) => props.theme.bgColor};
 

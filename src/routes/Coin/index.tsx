@@ -7,8 +7,6 @@ import { BoxInfo, BoxTab, TabMenu, Wrap } from './style';
 import { useCoin } from '@routes/Coin/useCoin';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 
-type CoinId = string;
-
 interface CoinRouteState {
   name: string;
 }
@@ -17,7 +15,7 @@ const Coin = () => {
   const { state } = useLocation();
   const { name } = (state as CoinRouteState) ?? {};
 
-  const { coinId } = useParams<CoinId>();
+  const { coinId } = useParams();
   const { coin, coinLoading, tickers, tickersLoading } = useCoin(coinId!);
 
   return (
@@ -73,8 +71,8 @@ const Coin = () => {
                 <NavLink to="chart">CHART</NavLink>
               </li>
             </TabMenu>
-            <div className="tab">
-              <Outlet />
+            <div className="content">
+              <Outlet context={{ coinId }} />
             </div>
           </BoxTab>
         </Wrap>

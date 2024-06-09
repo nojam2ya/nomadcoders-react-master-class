@@ -11,13 +11,11 @@ interface ICoin {
   type: string;
 }
 
-interface CoinsI extends Array<ICoin> {}
-
 export const useCoins = () => {
-  const { data = [], isLoading } = useQuery({
+  const { data, isLoading } = useQuery<ICoin[]>({
     queryKey: ['coins'],
     queryFn: () => getCoins(),
   });
 
-  return { coins: data.slice(0, 100) as CoinsI, coinsLoading: isLoading };
+  return { coins: data ? data.slice(0, 100) : [], coinsLoading: isLoading };
 };
