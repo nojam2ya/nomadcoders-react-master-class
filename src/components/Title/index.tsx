@@ -1,7 +1,7 @@
 import { Wrap } from '@src/components/Title/style';
-import { ChildrenI } from '@src/interface';
+import { IChildren } from '@src/interface';
 
-const Title = ({ children }: ChildrenI) => {
+const Title = ({ children }: IChildren) => {
   return (
     <Wrap>
       <>{children}</>

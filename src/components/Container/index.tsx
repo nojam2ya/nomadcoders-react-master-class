@@ -1,7 +1,7 @@
-import { ChildrenI } from '@src/interface';
+import { IChildren } from '@src/interface';
 import { Wrap } from './style';
 
-const Container = ({ children }: ChildrenI) => {
+const Container = ({ children }: IChildren) => {
   return <Wrap>{children}</Wrap>;
 };
 

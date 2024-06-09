@@ -4,36 +4,36 @@ import Header from '@components/Header';
 import { Coin, CoinsList } from './style';
 import { useCoins } from '@routes/Coins/useCoins';
 import { Link } from 'react-router-dom';
-
-interface CoinI {
-  id: string;
-  is_active: boolean;
-  is_new: boolean;
-  name: string;
-  rank: number;
-  symbol: string;
-  type: string;
-}
+import Loader from '@src/components/Loader';
 
 const Coins = () => {
-  const { coins } = useCoins();
+  const { coins, coinsLoading } = useCoins();
 
   return (
     <Container>
       <Header>
         <Title>COINS</Title>
       </Header>
-      <CoinsList>
-        {coins &&
-          coins.map((coin: CoinI) => (
-            <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>
-                <span className="text">{coin.name}</span>
-                <span className="arrow">&rarr;</span>
-              </Link>
-            </Coin>
-          ))}
-      </CoinsList>
+
+      {coinsLoading ? (
+        <Loader />
+      ) : (
+        <CoinsList>
+          {coins &&
+            coins.map((coin) => (
+              <Coin key={coin.id}>
+                <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                  <img
+                    src={`https://cryptoicon-api.pages.dev/api/icon/${coin.symbol.toLowerCase()}`}
+                    alt=""
+                  />
+                  <span className="text">{coin.name}</span>
+                  <span className="arrow">&rarr;</span>
+                </Link>
+              </Coin>
+            ))}
+        </CoinsList>
+      )}
     </Container>
   );
 };

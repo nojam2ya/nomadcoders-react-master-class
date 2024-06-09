@@ -4,7 +4,7 @@ import { Wrap } from './style';
 const HomeBtn = () => {
   return (
     <Wrap type="button">
-      <Link to="/">home</Link>
+      <Link to="/">&larr;</Link>
     </Wrap>
   );
 };

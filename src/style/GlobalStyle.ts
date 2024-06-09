@@ -92,6 +92,8 @@ const GlobalStyle = createGlobalStyle`${css`
     /* font: inherit; */
     font-weight: inherit;
     vertical-align: baseline;
+    border-spacing: 0px;
+    border-collapse: collapse;
   }
   /* HTML5 display-role reset for older browsers */
   article,
