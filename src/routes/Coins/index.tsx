@@ -5,14 +5,20 @@ import { Coin, CoinsList } from './style';
 import { useCoins } from '@routes/Coins/useCoins';
 import { Link } from 'react-router-dom';
 import Loader from '@src/components/Loader';
+import { Helmet } from 'react-helmet-async';
 
 const Coins = () => {
   const { coins, coinsLoading } = useCoins();
 
+  const title = 'COINS';
+
   return (
     <Container>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <Header>
-        <Title>COINS</Title>
+        <Title>{title}</Title>
       </Header>
 
       {coinsLoading ? (
