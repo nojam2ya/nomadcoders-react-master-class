@@ -1,16 +1,9 @@
 import ApexChart from 'react-apexcharts';
-import { theme } from '@src/style/theme';
+import { lightTheme } from '@src/style/theme';
 import dayjs from 'dayjs';
 import { IOhlcvHistorical } from '@src/interfaces';
 
 const LineChart = ({ chartData }: { chartData: IOhlcvHistorical[] }) => {
-  console.log(chartData);
-  const data = chartData.map((data) => ({
-    x: new Date(data.time_close),
-    y: [data.high, data.low, data.open, data.close],
-  }));
-  console.log(data);
-
   return (
     <ApexChart
       type="line"
@@ -59,7 +52,7 @@ const LineChart = ({ chartData }: { chartData: IOhlcvHistorical[] }) => {
           type: 'gradient',
           gradient: { gradientToColors: ['blue'], stops: [0, 100] },
         },
-        colors: [theme.bgColor],
+        colors: [lightTheme.bgColor],
         tooltip: {
           y: {
             formatter: (val) => `$${val.toFixed(2)}`,

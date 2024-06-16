@@ -1,11 +1,15 @@
 import GlobalStyle from '@style/GlobalStyle';
 import Routers from './Routers';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from '@src/style/theme';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Routers />
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <Routers />
+      </ThemeProvider>
     </>
   );
 }
