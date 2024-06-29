@@ -16,7 +16,8 @@
 - dayjs
 
 ## 🏷 Index
-| directory | project name |
-|-----------|--------------|
-| coin      | 코인 프로젝트 |
-| todo      | todo 리스트  |
+| directory   | project name  |
+|-------------|---------------|
+| coin        | 코인 모니터링  |
+| todo        | todo 리스트   |
+| kanbanboard | todo 칸반보드  |
