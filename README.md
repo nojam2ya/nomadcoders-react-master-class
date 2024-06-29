@@ -14,3 +14,8 @@
 - styled-components
 - axios
 - dayjs
+
+## 🏷 Index
+| directory | project name |
+|-----------|--------------|
+| coin      | 코인 프로젝트 |
