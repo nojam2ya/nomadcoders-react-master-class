@@ -19,3 +19,4 @@
 | directory | project name |
 |-----------|--------------|
 | coin      | 코인 프로젝트 |
+| todo      | todo 리스트  |
