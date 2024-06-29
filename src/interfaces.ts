@@ -41,6 +41,7 @@ export interface ICoinInfo {
   whitepaper: { link: string; thumbnail: string };
 }
 
+// tickers interface
 export interface ITickers {
   beta_value: number;
   first_data_at: string;
