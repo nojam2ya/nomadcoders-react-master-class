@@ -22,9 +22,21 @@ export const Title = styled.span`
   text-align: center;
 `;
 
-export const Content = styled.span<{ isMinus?: boolean }>`
+export const Content = styled.span<{
+  isMinus?: boolean;
+  isDark?: boolean;
+}>`
   display: block;
+  font-weight: bold;
 
   color: ${(props) => (props.isMinus ? 'red' : 'green')};
+  ${(props) =>
+    props.isDark
+      ? `text-shadow: -1px 0px white,
+                      0px 1px white,
+                      1px 0px white,
+                      0px -1px white
+        ;`
+      : ''}
   text-align: center;
 `;

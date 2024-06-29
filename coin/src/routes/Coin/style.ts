@@ -101,7 +101,7 @@ export const TabMenu = styled.ul`
       font-weight: 600;
       color: ${(props) => props.theme.bgColor};
 
-      background-color: ${(props) => props.theme.accentColor};
+      background-color: ${(props) => props.theme.shadowColor};
 
       &.active,
       &:hover {

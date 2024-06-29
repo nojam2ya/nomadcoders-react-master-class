@@ -2,8 +2,11 @@ import ApexChart from 'react-apexcharts';
 import { lightTheme } from '@src/style/theme';
 import dayjs from 'dayjs';
 import { IOhlcvHistorical } from '@src/interfaces';
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from '@src/atoms';
 
 const LineChart = ({ chartData }: { chartData: IOhlcvHistorical[] }) => {
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <ApexChart
       type="line"
@@ -26,7 +29,7 @@ const LineChart = ({ chartData }: { chartData: IOhlcvHistorical[] }) => {
           show: false,
         },
         theme: {
-          mode: 'light',
+          mode: isDark ? 'dark' : 'light',
         },
         stroke: {
           curve: 'smooth',
@@ -52,7 +55,7 @@ const LineChart = ({ chartData }: { chartData: IOhlcvHistorical[] }) => {
           type: 'gradient',
           gradient: { gradientToColors: ['blue'], stops: [0, 100] },
         },
-        colors: [lightTheme.bgColor],
+        colors: [isDark ? 'lime' : lightTheme.bgColor],
         tooltip: {
           y: {
             formatter: (val) => `$${val.toFixed(2)}`,
