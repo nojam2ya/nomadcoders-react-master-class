@@ -1,7 +1,9 @@
+// children prop interface
 export interface IChildren {
   children: JSX.Element | JSX.Element[] | string | string[];
 }
 
+// coin interface
 export interface ICoinInfo {
   description: string;
   development_status: string;
