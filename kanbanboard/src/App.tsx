@@ -78,7 +78,7 @@ function App() {
       <Wrap>
         <Boards>
           {Object.keys(toDos).map((key) => (
-            <Board boardId={key} toDos={toDos[key]} />
+            <Board key={key} boardId={key} toDos={toDos[key]} />
           ))}
           <CreateBoard />
         </Boards>

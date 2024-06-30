@@ -1,14 +1,33 @@
-import { atom } from 'recoil';
+import { AtomEffect, atom } from 'recoil';
+
+export interface IToDo {
+  id: number;
+  text: string;
+}
 
 export interface IToDoState {
-  [key: string]: string[];
+  [key: string]: IToDo[];
 }
+
+const localStorageEffect =
+  (key: string): AtomEffect<IToDoState> =>
+  ({ setSelf, onSet }) => {
+    const savedValue = localStorage.getItem(key);
+    if (savedValue) {
+      setSelf(JSON.parse(savedValue));
+    }
+
+    onSet((newValue: IToDoState) =>
+      localStorage.setItem(key, JSON.stringify(newValue)),
+    );
+  };
 
 export const toDoState = atom<IToDoState>({
   key: 'toDo',
   default: {
-    'To do': ['a', 'b', 'c', 'd', 'e', 'f'],
-    Doing: ['ㄱ', 'ㄴ', 'ㄷ'],
-    Done: ['1', '2', '3'],
+    'To do': [],
+    Doing: [],
+    Done: [],
   },
+  effects: [localStorageEffect('toDoState')],
 });

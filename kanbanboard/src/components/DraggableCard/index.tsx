@@ -1,15 +1,33 @@
+import { toDoState } from '@src/atoms';
 import { Wrap } from '@src/components/DraggableCard/style';
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import { useSetRecoilState } from 'recoil';
 
 interface IDraggableCardProps {
-  toDo: string;
+  boardId: string;
+  toDoId: number;
+  toDoText: string;
   index: number;
 }
 
-const DraggableCard = ({ toDo, index }: IDraggableCardProps) => {
+const DraggableCard = ({
+  boardId,
+  toDoId,
+  toDoText,
+  index,
+}: IDraggableCardProps) => {
+  const setToDos = useSetRecoilState(toDoState);
+
+  const onDelete = () => {
+    setToDos((prev) => ({
+      ...prev,
+      [boardId]: prev[boardId].filter((toDo) => toDo.id !== toDoId),
+    }));
+  };
+
   return (
-    <Draggable key={toDo} draggableId={toDo} index={index}>
+    <Draggable key={toDoId} draggableId={toDoId + ''} index={index}>
       {(provided, snapshot) => (
         <Wrap
           isDragging={snapshot.isDragging}
@@ -17,7 +35,10 @@ const DraggableCard = ({ toDo, index }: IDraggableCardProps) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          {toDo}
+          {toDoText}
+          <button className="delete" onClick={onDelete}>
+            ❌
+          </button>
         </Wrap>
       )}
     </Draggable>

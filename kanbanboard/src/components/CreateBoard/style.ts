@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const Wrap = styled.form`
   padding: 30px 10px 20px 10px;
   border-radius: 6px;
   min-height: 200px;
@@ -8,8 +8,6 @@ export const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  cursor: pointer;
 
   background-color: rgba(255, 255, 255, 0.08);
 
@@ -25,12 +23,19 @@ export const Wrap = styled.div`
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  span {
+  button {
     display: block;
-    color: white;
-  }
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 4px 10px;
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    color: white;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   }
 `;

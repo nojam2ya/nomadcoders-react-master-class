@@ -1,27 +1,25 @@
 import { toDoState } from '@src/atoms';
 import { Wrap } from '@src/components/CreateBoard/style';
-import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
 
+interface IFormData {
+  name: '';
+}
+
 const CreateBoard = () => {
-  const [name, setName] = useState('');
   const setToDos = useSetRecoilState(toDoState);
+  const { register, handleSubmit, reset } = useForm<IFormData>();
 
-  const onChangeName = (event: React.FormEvent<HTMLInputElement>) => {
-    setName(event.currentTarget.value);
-  };
-
-  const onAddBoard = () => {
-    if (name) {
-      setToDos((prev) => ({ ...prev, [name]: [] }));
-      setName('');
-    }
+  const onAddBoard = (data: IFormData) => {
+    setToDos((prev) => ({ ...prev, [data.name]: [] }));
+    reset();
   };
 
   return (
-    <Wrap onClick={onAddBoard}>
-      <input type="text" value={name} onChange={onChangeName} />
-      <span>add board</span>
+    <Wrap onSubmit={handleSubmit(onAddBoard)}>
+      <input type="text" {...register('name', { required: true })} />
+      <button type="submit">add board</button>
     </Wrap>
   );
 };
