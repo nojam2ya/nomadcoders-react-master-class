@@ -12,6 +12,15 @@ const Header = () => {
           <li>
             <Link to="/pop">pop</Link>
           </li>
+          <li>
+            <Link to="/slider">slider</Link>
+          </li>
+          <li>
+            <Link to="/layout-animation">layout-animation</Link>
+          </li>
+          <li>
+            <Link to="/board">board</Link>
+          </li>
         </ul>
       </nav>
     </Wrap>

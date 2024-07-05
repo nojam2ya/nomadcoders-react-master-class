@@ -6,21 +6,8 @@ import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from '@src/style/theme.ts';
 import GlobalStyle from '@src/style/GlobalStyle.ts';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Root from './Root.tsx';
-import Boxes from '@components/Boxes';
-import PopContainer from '@src/components/PopContainer/index.tsx';
-
-const router = createBrowserRouter([
-  {
-    path: '',
-    element: <Root />,
-    children: [
-      { path: 'boxes', element: <Boxes /> },
-      { path: 'pop', element: <PopContainer /> },
-    ],
-  },
-]);
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
 
 const queryClient = new QueryClient({
   defaultOptions: {
