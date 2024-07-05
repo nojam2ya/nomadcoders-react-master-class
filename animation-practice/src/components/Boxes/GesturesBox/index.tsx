@@ -1,4 +1,4 @@
-import { Wrap } from '@src/boxes/GesturesBox/style';
+import { Wrap } from './style';
 
 const gesturesVars = {
   hover: { rotate: 90, scale: 1.2 },

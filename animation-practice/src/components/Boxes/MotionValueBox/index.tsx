@@ -1,5 +1,5 @@
 import { gradientState } from '@src/atoms';
-import { Box } from '@src/boxes/style';
+import { Box } from '@components/Boxes/style';
 import { useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';

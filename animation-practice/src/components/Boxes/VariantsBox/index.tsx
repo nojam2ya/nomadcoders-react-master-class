@@ -1,4 +1,4 @@
-import { Circle, Wrap } from '@src/boxes/VariantsBox/style';
+import { Circle, Wrap } from './style';
 
 const parentVars = {
   start: { opacity: 0, scale: 0 },

@@ -1,4 +1,4 @@
-import { Box } from '@src/boxes/style';
+import { Box } from '@components/Boxes/style';
 import styled from 'styled-components';
 
 export const Wrap = styled(Box)`

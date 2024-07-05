@@ -1,4 +1,4 @@
-import { InnerBox, Wrap } from '@src/boxes/DragBox/style';
+import { InnerBox, Wrap } from './style';
 import { useRef } from 'react';
 
 const DragBox = () => {

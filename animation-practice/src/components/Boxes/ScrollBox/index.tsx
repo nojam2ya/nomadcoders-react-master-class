@@ -1,4 +1,4 @@
-import { Box } from '@src/boxes/style';
+import { Box } from '@components/Boxes/style';
 import { useScroll, useTransform } from 'framer-motion';
 
 const ScrollBox = () => {

@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from '@src/style/theme.ts';
 import GlobalStyle from '@src/style/GlobalStyle.ts';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './Root.tsx';
+import Boxes from '@components/Boxes';
+import PopContainer from '@src/components/PopContainer/index.tsx';
+
+const router = createBrowserRouter([
+  {
+    path: '',
+    element: <Root />,
+    children: [
+      { path: 'boxes', element: <Boxes /> },
+      { path: 'pop', element: <PopContainer /> },
+    ],
+  },
+]);
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,7 +37,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <RecoilRoot>
           <ThemeProvider theme={darkTheme}>
             <GlobalStyle />
-            <App />
+            <RouterProvider router={router} />
+            {/* <App /> */}
           </ThemeProvider>
         </RecoilRoot>
       </QueryClientProvider>

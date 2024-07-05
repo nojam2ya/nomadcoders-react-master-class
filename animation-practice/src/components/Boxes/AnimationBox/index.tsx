@@ -1,4 +1,4 @@
-import { Box } from '@src/boxes/style';
+import { Box } from '@components/Boxes/style';
 
 const rotateSpringVars = {
   start: { scale: 0, rotate: 180 },
