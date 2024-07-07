@@ -134,9 +134,9 @@ const GlobalStyle = createGlobalStyle`${css`
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    color: ${(props) => props.theme.textColor};
+    color: ${(props) => props.theme.white.darker};
 
-    background-color: ${(props) => props.theme.bgColor};
+    background-color: black;
   }
 
   a {

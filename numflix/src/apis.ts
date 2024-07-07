@@ -10,7 +10,7 @@ const AxiosInstance = axios.create({
   },
 });
 
-interface IMove {
+export interface IMove {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -27,7 +27,7 @@ interface IMove {
   vote_count: number;
 }
 
-interface IMovies {
+export interface IGetMoviesResult {
   dates: { maximum: string; minimum: string };
   page: number;
   results: IMove[];
@@ -35,7 +35,7 @@ interface IMovies {
   total_results: number;
 }
 
-export const getMovies = async <T = IMovies>(): Promise<T> =>
+export const getMovies = async <T = IGetMoviesResult>(): Promise<T> =>
   await AxiosInstance.get<T>(
     '/movie/now_playing?language=en-US&region=kr',
   ).then((res) => res.data);
