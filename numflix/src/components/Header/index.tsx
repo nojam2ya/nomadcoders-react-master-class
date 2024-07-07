@@ -1,7 +1,10 @@
-import { Link, matchPath, useLocation } from 'react-router-dom';
-import { Circle, Col, Item, Items, Logo, Nav, SearchBox, Wrap } from './style';
-import { motion, useAnimation, useScroll } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { Link, useMatch } from 'react-router-dom';
+import { Circle, Col, Item, Items, Logo, Nav, Wrap } from './style';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { scrollState } from '@src/atoms';
+import SearchInputComp from '@src/components/Header/SearchInputComp';
 
 const logoVariants = {
   normal: {
@@ -25,30 +28,18 @@ const headerVariants = {
 };
 
 const Header = () => {
-  const location = useLocation();
-  const [searchOpen, setSearchOpen] = useState(false);
-  const { scrollY } = useScroll();
-  const inputAnimation = useAnimation();
+  const isHome = useMatch('/');
+  const isMovie = useMatch('/movies/:movieId');
+  const isTv = useMatch('/tv');
+
   const headerAnimation = useAnimation();
-  const toogleSearchOpen = () => {
-    if (searchOpen) {
-      inputAnimation.start({ scaleX: 0 });
-      setSearchOpen(false);
-    } else {
-      inputAnimation.start({ scaleX: 1 });
-      setSearchOpen(true);
-    }
-  };
+
+  const scroll = useRecoilValue(scrollState);
 
   useEffect(() => {
-    scrollY.onChange(() => {
-      if (scrollY.get() > 80) {
-        headerAnimation.start('scroll');
-      } else {
-        headerAnimation.start('top');
-      }
-    });
-  }, [scrollY, headerAnimation]);
+    if (scroll) headerAnimation.start('scroll');
+    else headerAnimation.start('top');
+  }, [scroll, headerAnimation]);
 
   return (
     <Wrap variants={headerVariants} initial="top" animate={headerAnimation}>
@@ -68,44 +59,19 @@ const Header = () => {
             <Item>
               <Link to="/">
                 Home
-                {matchPath(location.pathname, '/') && (
-                  <Circle layoutId="circle" />
-                )}
+                {(isHome || isMovie) && <Circle layoutId="circle" />}
               </Link>
             </Item>
             <Item>
               <Link to="/tv">
                 Tv Shows
-                {matchPath(location.pathname, '/tv') && (
-                  <Circle layoutId="circle" />
-                )}
+                {isTv && <Circle layoutId="circle" />}
               </Link>
             </Item>
           </Items>
         </Col>
         <Col>
-          <SearchBox>
-            <motion.input
-              type="text"
-              placeholder="Search for movie or tv show..."
-              initial={{ scaleX: 0 }}
-              animate={inputAnimation}
-              // animate={{
-              //   scaleX: searchOpen ? 1 : 0,
-              // }}
-              transition={{ type: 'linear' }}
-            />
-            <button onClick={toogleSearchOpen}>
-              <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                animate={{ x: searchOpen ? -205 : 0 }}
-                transition={{ type: 'linear' }}
-              >
-                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-              </motion.svg>
-            </button>
-          </SearchBox>
+          <SearchInputComp />
         </Col>
       </Nav>
     </Wrap>

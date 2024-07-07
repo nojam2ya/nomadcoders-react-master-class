@@ -73,7 +73,7 @@ export const Circle = styled(motion.span)`
   margin: 0 auto;
 `;
 
-export const SearchBox = styled.div`
+export const SearchBox = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,6 +84,13 @@ export const SearchBox = styled.div`
     color: #fff;
     border: 1px solid ${(props) => props.theme.white.darker};
     background-color: rgba(0, 0, 0, 0.6);
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   button {

@@ -1,12 +1,17 @@
+import { useScroll } from 'framer-motion';
 import { ScrollBar, ScrollWrap, Wrap } from './style';
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { scrollState } from '@src/atoms';
 
 const CustomScrollContainer = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll({ container: ref });
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   let scrollbarTimeout: NodeJS.Timeout;
+  const setScroll = useSetRecoilState(scrollState);
 
   useEffect(() => {
     if (ref.current) {
@@ -42,6 +47,16 @@ const CustomScrollContainer = ({ children }: { children: ReactNode }) => {
       };
     }
   }, [ref]);
+
+  useEffect(() => {
+    scrollY.onChange(() => {
+      if (scrollY.get() > 80) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+  }, [scrollY, setScroll]);
 
   return (
     <Wrap>
