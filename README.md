@@ -21,10 +21,12 @@
 
 ## 🏷 Index
 
-| directory          | project name         |
-| ------------------ | -------------------- |
-| coin               | 코인 모니터링        |
-| todo               | todo 리스트          |
-| kanbanboard        | todo 칸반보드        |
-| selector-practice  | recoil selector 연습 |
-| animation-practice | famer motion 연습    |
+| directory          | project name             |
+| ------------------ | ------------------------ |
+| coin               | 코인 모니터링            |
+| todo               | todo 리스트              |
+| kanbanboard        | todo 칸반보드            |
+| selector-practice  | recoil selector 연습     |
+| animation-practice | famer motion 연습        |
+| numflix            | nexflix 프론트 일부 클론 |
+| dev-stickers       | gatsby                   |
